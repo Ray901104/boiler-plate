@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const port = 5000
 
+const config = require('./config/key');
+
 const {User} = require('./models/User');
 const bodyParser = require('body-parser');
 
@@ -13,8 +15,7 @@ app.use(bodyParser.json());
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://youngrae:youngrae@boilerplate.mmvbn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority'
-).then(() => console.log('MongoDB Connected...')).catch(err => console.log(err));
+mongoose.connect(config.mongoURI).then(() => console.log('MongoDB Connected...')).catch(err => console.log(err));
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
