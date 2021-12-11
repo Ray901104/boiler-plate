@@ -76,7 +76,7 @@ app.get("/api/users/auth", auth, (req, res) => {
   // 여기까지 미들웨어를 통과해서 왔기 때문에 Authentication이 true라는 뜻
   res.status(200).json({
     _id: req.user._id,
-    isAdmin: req.user.role === 0 ? false : true,
+    isAdmin: req.user.role === 0,
     isAuth: true,
     email: req.user.email,
     name: req.user.name,
